@@ -6,13 +6,23 @@
 //
 
 import Foundation
+import Lottie
 
 class ListViewModel: ObservableObject {
   @Published var devices: [Device] = []
   @Published var scanStatus: ScanStatus = .waiting
   
   func scan() {
-    scanStatus = .scanning
+    
+    if scanStatus == .waiting || scanStatus == .wrong {
+      scanStatus = .scanning
+    } else if scanStatus == .scanning  {
+      scanStatus = .success
+    } else
+    {
+      scanStatus = .wrong
+    }
+    
     save()
   }
   

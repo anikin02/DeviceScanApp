@@ -14,7 +14,7 @@ struct ListView: View {
   var body: some View {
     
     VStack() {
-      Group {
+      VStack {
         switch viewModel.scanStatus {
         case .waiting:
           Text("Press the button to scan")
@@ -30,7 +30,14 @@ struct ListView: View {
           }
           
         case .wrong:
-          Text("SMTH Wrong")
+          VStack {
+            Image(systemName: "xmark.circle")
+              .resizable()
+              .frame(width: 50, height: 50)
+              .foregroundStyle(.red)
+            Text("Try again")
+              .font(.system(size: 21, weight: .black))
+          }
         }
       }
       .frame(maxHeight: .infinity, alignment: .center)
@@ -47,7 +54,7 @@ struct ListView: View {
       .padding(.vertical)
       .padding(.horizontal, 30)
     }
-    
+    .background(Color(UIColor.systemGroupedBackground))
   }
 }
 
