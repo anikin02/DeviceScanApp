@@ -10,7 +10,16 @@ import SwiftUI
 struct ContentView: View {
   var body: some View {
     NavigationView {
-      ListView()
+      TabView {
+        ListView()
+          .tabItem {
+            Label("Scan", systemImage: "magnifyingglass")
+          }
+        HistoryView()
+          .tabItem {
+            Label("History", systemImage: "list.bullet")
+          }
+      }
     }
   }
 }
