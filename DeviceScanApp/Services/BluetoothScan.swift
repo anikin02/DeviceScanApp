@@ -33,12 +33,10 @@ class BluetoothScan: NSObject, CBCentralManagerDelegate {
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
     }
     
-    // Проверяем текущую авторизацию
-    if #available(iOS 13.0, *) {
+    if #available(iOS 15.0, *) {
       switch CBCentralManager.authorization {
       case .notDetermined:
         print("📩 Запрос разрешения появится автоматически при создании CBCentralManager")
-        // Дальше будем ждать вызова centralManagerDidUpdateState
       case .denied:
         print("🚫 Bluetooth доступ запрещён. Нужно включить в Настройках")
         completion([])
@@ -52,7 +50,6 @@ class BluetoothScan: NSObject, CBCentralManagerDelegate {
       }
     }
     
-    // Если Bluetooth уже включён — можно сразу сканировать
     if centralManager.state == .poweredOn {
       startScan()
     } else {
@@ -64,10 +61,8 @@ class BluetoothScan: NSObject, CBCentralManagerDelegate {
     print("🔍 Starting scan...")
     discoveredItems.removeAll()
     
-    // Сканируем все устройства
     centralManager.scanForPeripherals(withServices: nil, options: nil)
     
-    // Остановим сканирование через заданное время
     DispatchQueue.main.asyncAfter(deadline: .now() + scanDuration) { [weak self] in
       guard let self = self else { return }
       self.centralManager.stopScan()
@@ -106,13 +101,12 @@ class BluetoothScan: NSObject, CBCentralManagerDelegate {
     
     let item = BluetoothItem(
       name: peripheral.name ?? "Unknown",
-      id: peripheral.identifier,     // UUID
-      rssi: RSSI.intValue,           // RSSI как Int
+      id: peripheral.identifier,
+      rssi: RSSI.intValue,
       isConnected: peripheral.state == .connected,
       date: formatter.string(from: Date())
     )
     
-    // Проверяем, что такого устройства ещё нет
     if !discoveredItems.contains(where: { $0.id == item.id }) {
       discoveredItems.append(item)
     }

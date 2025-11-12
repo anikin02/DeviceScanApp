@@ -43,7 +43,6 @@ class ListViewModel: ObservableObject {
       group.leave()
     }
     
-    // Когда оба сканирования завершены
     group.notify(queue: .main) { [weak self] in
       guard let self = self else { return }
       self.devices = allDevices.sorted { $0.date > $1.date }
