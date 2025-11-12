@@ -23,10 +23,8 @@ struct ListView: View {
           LottieView(animation: .named("Searching Animation"))
             .playing(loopMode: .loop)
         case .success:
-          List {
-            ListItemView()
-            ListItemView()
-            ListItemView()
+          List(viewModel.devices, id: \.id) { item in
+            ListItemView(item: item)
           }
           
         case .wrong:
