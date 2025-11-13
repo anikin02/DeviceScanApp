@@ -9,4 +9,14 @@ import Foundation
 
 class HistoryViewModel: ObservableObject {
   @Published var items = [Device]()
+  
+  init() {
+    loadData()
+  }
+  
+  func loadData() {
+    DispatchQueue.main.async {
+      self.items = RealmManager.shared.getAllDevices()
+    }
+  }
 }

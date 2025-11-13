@@ -13,16 +13,16 @@ struct HistoryView: View {
   var body: some View {
     VStack() {
       VStack {
-        if !viewModel.items.isEmpty {
+        if viewModel.items.isEmpty {
           VStack {
             Text("Oops. It's still empty.")
               .font(.system(size: 21, weight: .black))
           }
         } else {
-          List {
-            HistoryItemView()
-            HistoryItemView()
-            HistoryItemView()
+          List(viewModel.items, id: \.id) { item in
+            NavigationLink(destination: DetailsView(item: item)) {
+              HistoryItemView(item: item)
+            }
           }
         }
       }

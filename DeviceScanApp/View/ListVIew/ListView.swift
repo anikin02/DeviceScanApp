@@ -24,7 +24,9 @@ struct ListView: View {
             .playing(loopMode: .loop)
         case .success:
           List(viewModel.devices, id: \.id) { item in
-            ListItemView(item: item)
+            NavigationLink(destination: DetailsView(item: item)) {
+              ListItemView(item: item)
+            }
           }
           
         case .wrong:

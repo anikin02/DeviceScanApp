@@ -8,27 +8,18 @@
 import SwiftUI
 
 struct HistoryItemView: View {
+  let item: Device
+  
   var body: some View {
     VStack(alignment: .leading) {
       HStack {
-        Image(systemName: "wifi")
-        Text("255.255.255.255")
+        Image(systemName: item.type == .bluetooth ? "b.circle" : "wifi" )
+        Text(item.displayName)
         Spacer()
       }
       HStack {
         Spacer()
-        Text("12.11.25")
-      }
-    }
-    VStack(alignment: .leading) {
-      HStack {
-        Image(systemName: "b.circle")
-        Text("255.255.255.255")
-        Spacer()
-      }
-      HStack {
-        Spacer()
-        Text("12.11.25")
+        Text(item.date)
       }
     }
   }

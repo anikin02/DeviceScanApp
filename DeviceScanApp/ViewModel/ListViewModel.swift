@@ -47,12 +47,17 @@ class ListViewModel: ObservableObject {
       guard let self = self else { return }
       self.devices = allDevices.sorted { $0.date > $1.date }
       self.scanStatus = .success
+      
+      save()
+      
       print("Сканирование завершено, найдено устройств: \(allDevices.count)")
     }
   }
   
   private func save() {
-    
+    for item in devices {
+      RealmManager.shared.save(item)
+    }
   }
   
   

@@ -9,16 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
   var body: some View {
-    NavigationView {
-      TabView {
+    TabView {
+      NavigationView {
         ListView()
-          .tabItem {
-            Label("Scan", systemImage: "magnifyingglass")
-          }
+      }
+      .tabItem {
+        Label("Scan", systemImage: "magnifyingglass")
+      }
+      NavigationView {
         HistoryView()
-          .tabItem {
-            Label("History", systemImage: "list.bullet")
-          }
+      }
+      .tabItem {
+        Label("History", systemImage: "list.bullet")
       }
     }
   }

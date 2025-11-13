@@ -7,9 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		789D721B2EC6036100526CE2 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 789D721A2EC6036100526CE2 /* RealmSwift */; };
+		789D72202EC618B800526CE2 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 789D721A2EC6036100526CE2 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		78F1833E2EC2D2EB007049E3 /* MMLanScan in Frameworks */ = {isa = PBXBuildFile; productRef = 78F1833D2EC2D2EB007049E3 /* MMLanScan */; };
 		78F183552EC35C8D007049E3 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 78F183542EC35C8D007049E3 /* Lottie */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		789D72212EC618B800526CE2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				789D72202EC618B800526CE2 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7864E52C2EC2B3F300A96D68 /* DeviceScanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeviceScanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				789D721B2EC6036100526CE2 /* RealmSwift in Frameworks */,
 				78F1833E2EC2D2EB007049E3 /* MMLanScan in Frameworks */,
 				78F183552EC35C8D007049E3 /* Lottie in Frameworks */,
 			);
@@ -75,6 +92,7 @@
 				7864E5282EC2B3F300A96D68 /* Sources */,
 				7864E5292EC2B3F300A96D68 /* Frameworks */,
 				7864E52A2EC2B3F300A96D68 /* Resources */,
+				789D72212EC618B800526CE2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -87,6 +105,7 @@
 			packageProductDependencies = (
 				78F1833D2EC2D2EB007049E3 /* MMLanScan */,
 				78F183542EC35C8D007049E3 /* Lottie */,
+				789D721A2EC6036100526CE2 /* RealmSwift */,
 			);
 			productName = DeviceScanApp;
 			productReference = 7864E52C2EC2B3F300A96D68 /* DeviceScanApp.app */;
@@ -119,6 +138,7 @@
 			packageReferences = (
 				78F1833C2EC2D2EB007049E3 /* XCRemoteSwiftPackageReference "MMLanScan" */,
 				78F183532EC35C8D007049E3 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				789D72192EC6036100526CE2 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7864E52D2EC2B3F300A96D68 /* Products */;
@@ -368,6 +388,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		789D72192EC6036100526CE2 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		78F1833C2EC2D2EB007049E3 /* XCRemoteSwiftPackageReference "MMLanScan" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/b5i/MMLanScan.git";
@@ -387,6 +415,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		789D721A2EC6036100526CE2 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 789D72192EC6036100526CE2 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		78F1833D2EC2D2EB007049E3 /* MMLanScan */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 78F1833C2EC2D2EB007049E3 /* XCRemoteSwiftPackageReference "MMLanScan" */;
